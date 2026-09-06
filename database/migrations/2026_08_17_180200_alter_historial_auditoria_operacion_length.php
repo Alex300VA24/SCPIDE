@@ -7,33 +7,31 @@ return new class extends Migration
 {
     public function up(): void
     {
-        if ($this->sqlite()) {
-            return;
-        }
-
-        DB::unprepared($this->sqlsrv()
-            ? 'ALTER TABLE historial_auditoria ALTER COLUMN operacion NVARCHAR(50) NOT NULL'
-            : 'ALTER TABLE historial_auditoria MODIFY operacion VARCHAR(50) NOT NULL');
+        $this->resizeOperacion(50);
     }
 
     public function down(): void
     {
-        if ($this->sqlite()) {
-            return;
-        }
-
-        DB::unprepared($this->sqlsrv()
-            ? 'ALTER TABLE historial_auditoria ALTER COLUMN operacion NVARCHAR(10) NOT NULL'
-            : 'ALTER TABLE historial_auditoria MODIFY operacion VARCHAR(10) NOT NULL');
+        $this->resizeOperacion(10);
     }
 
-    private function sqlsrv(): bool
+    private function resizeOperacion(int $length): void
     {
-        return DB::connection()->getDriverName() === 'sqlsrv';
-    }
+        $driver = DB::connection()->getDriverName();
 
-    private function sqlite(): bool
-    {
-        return DB::connection()->getDriverName() === 'sqlite';
+        match ($driver) {
+            'pgsql' => DB::unprepared(
+                "ALTER TABLE historial_auditoria ALTER COLUMN operacion TYPE VARCHAR({$length})"
+            ),
+            'sqlsrv' => DB::unprepared(
+                "ALTER TABLE historial_auditoria ALTER COLUMN operacion NVARCHAR({$length}) NOT NULL"
+            ),
+            'mysql', 'mariadb' => DB::unprepared(
+                "ALTER TABLE historial_auditoria MODIFY operacion VARCHAR({$length}) NOT NULL"
+            ),
+            // SQLite no necesita esta ampliación en su tipado dinámico.
+            'sqlite' => null,
+            default => throw new RuntimeException("Motor de base de datos no soportado: {$driver}"),
+        };
     }
 };
