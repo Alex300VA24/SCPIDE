@@ -1,0 +1,44 @@
+databases:
+  - name: scpide-demo-db
+    plan: free
+    databaseName: scpide_demo
+    user: scpide_demo
+
+services:
+  - type: web
+    name: scpide-demo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /login
+    envVars:
+      - key: APP_NAME
+        value: SCPIDE Demo
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: DEMO_ADMIN_PASSWORD
+        value: DemoSCPIDE2026!
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DATABASE_URL
+        fromDatabase:
+          name: scpide-demo-db
+          property: connectionString
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: warning
+      - key: CACHE_DRIVER
+        value: file
+      - key: SESSION_DRIVER
+        value: file
+      - key: SESSION_SECURE_COOKIE
+        value: "true"
+      - key: QUEUE_CONNECTION
+        value: sync
