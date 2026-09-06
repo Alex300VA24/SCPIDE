@@ -13,7 +13,10 @@
             <x-icon name="pdf" /> Exportar PDF
         </button>
     </form>
-    <button type="button" class="consulta-button consulta-button-print" onclick="window.print()" @disabled(! $canPrint)>
-        <x-icon name="print" /> Imprimir
-    </button>
+    <form method="GET" action="{{ route('consulta.print') }}" target="_blank">
+        <input type="hidden" name="token" value="{{ $token }}">
+        <button type="submit" class="consulta-button consulta-button-print" @disabled(! ($canPrint && $token))>
+            <x-icon name="print" /> Imprimir
+        </button>
+    </form>
 </div>

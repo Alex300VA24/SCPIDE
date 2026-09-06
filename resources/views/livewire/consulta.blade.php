@@ -125,7 +125,10 @@
                         <input type="hidden" name="token" value="{{ $pdfToken ?? '' }}">
                         <button type="submit" class="consulta-button consulta-button-pdf" @disabled(!($searched && $real && ($pdfToken ?? '')))><x-icon name="pdf" /> Exportar PDF</button>
                     </form>
-                    <button type="button" class="consulta-button consulta-button-print" onclick="window.print()" @disabled(!($searched && ($real || $usingFictitiousData)))><x-icon name="print" /> Imprimir</button>
+                    <form method="GET" action="{{ route('consulta.print') }}" target="_blank">
+                        <input type="hidden" name="token" value="{{ $pdfToken ?? '' }}">
+                        <button type="submit" class="consulta-button consulta-button-print" @disabled(!($searched && ($real || $usingFictitiousData)))><x-icon name="print" /> Imprimir</button>
+                    </form>
                 </div>
             @else
                 <x-consulta-export-actions

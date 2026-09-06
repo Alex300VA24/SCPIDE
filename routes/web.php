@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConsultaPdfController;
+use App\Http\Controllers\ConsultaPrintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DniPdfController;
 use App\Http\Controllers\PartidaRegistralPdfController;
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::post('consulta/dni/pdf', DniPdfController::class)->name('consulta.dni.pdf');
     Route::post('consulta/partida/pdf', PartidaRegistralPdfController::class)->name('consulta.partida.pdf');
     Route::post('consulta/pdf', ConsultaPdfController::class)->name('consulta.pdf');
+    Route::get('consulta/print', ConsultaPrintController::class)->name('consulta.print');
 });
 
 require __DIR__.'/auth.php';
