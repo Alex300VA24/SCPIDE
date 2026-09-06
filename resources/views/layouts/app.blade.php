@@ -8,7 +8,6 @@
         <title>{{ $title ?? 'Sistema de Consultas PIDE' }}</title>
         <link rel="icon" href="{{ asset('assets/images/logo_pide_sin_texto.png') }}" type="image/png">
         <link rel="stylesheet" href="{{ asset('assets/css/fonts.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/fontawesome/css/all.min.css') }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased text-ink">

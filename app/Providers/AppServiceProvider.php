@@ -22,6 +22,7 @@ use App\Services\PideDemo\SunarpDemoService;
 use App\Services\PideDemo\SunatDemoService;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -50,6 +51,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         $this->app->events->listen(RequestHandled::class, function ($handled) {
             $base = $handled->request->getBaseUrl();
 
