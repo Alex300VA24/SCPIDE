@@ -27,8 +27,8 @@
                 height: 4.5rem;
                 margin: 0 auto 1rem;
                 border-radius: 9999px;
-                border: 3px solid #ef4444;
-                color: #ef4444;
+                border: 3px solid #b42318;
+                color: #b42318;
                 font-size: 2.25rem;
                 line-height: 1;
                 display: flex;
@@ -38,13 +38,13 @@
             .pide-swal-title {
                 font-size: 1.35rem;
                 font-weight: 700;
-                color: #1e293b;
+                color: #172033;
                 margin: 0 0 1rem;
             }
-            .mensaje { color: #64748b; font-size: .95rem; line-height: 1.6; margin: 0 0 .75rem; word-break: break-word; }
+            .mensaje { color: #526079; font-size: .95rem; line-height: 1.6; margin: 0 0 .75rem; word-break: break-word; }
             .ubicacion { color: #94a3b8; font-size: .8rem; line-height: 1.5; margin: 0 0 .75rem; word-break: break-all; }
             .solucion-titulo { color: #334155; font-size: .85rem; line-height: 1.6; font-weight: 600; margin: 0 0 .25rem; }
-            .solucion { color: #64748b; font-size: .85rem; line-height: 1.6; margin: 0 0 1.5rem; }
+            .solucion { color: #526079; font-size: .85rem; line-height: 1.6; margin: 0 0 1.5rem; }
             .pide-swal-confirm {
                 display: inline-block;
                 border: 0;
@@ -53,7 +53,7 @@
                 font-weight: 600;
                 font-size: .9rem;
                 color: #ffffff;
-                background: #ef4444;
+                background: #b42318;
                 box-shadow: 0 4px 14px 0 rgba(0, 0, 0, .15);
                 text-decoration: none;
                 cursor: pointer;

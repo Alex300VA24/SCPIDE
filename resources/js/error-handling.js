@@ -1,7 +1,17 @@
 document.addEventListener('livewire:init', () => {
+    let sessionExpiredHandled = false;
+
     window.Livewire.hook('request', ({ fail }) => {
         fail(({ status, content, preventDefault }) => {
             preventDefault();
+
+            if (status === 419) {
+                // Varias peticiones Livewire pueden vencer a la vez (polling, componentes
+                // múltiples): solo la primera debe mostrar alerta y redirigir, para evitar
+                // el doble modal (alerta + pantalla de sesión vencida) al llegar al login.
+                if (sessionExpiredHandled) return;
+                sessionExpiredHandled = true;
+            }
 
             let message = 'Ocurrió un error inesperado. Intenta nuevamente en unos momentos.';
             let title = null;

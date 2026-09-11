@@ -1,10 +1,11 @@
 import Swal from 'sweetalert2';
 
+// Colores alineados con resources/css/foundation/tokens.css (--success, --primary, --warning, --danger).
 const ALERT_CONFIG = {
-    success: { icon: 'success', color: '#10b981', title: 'Éxito' },
-    info: { icon: 'info', color: '#3b82f6', title: 'Información' },
-    warning: { icon: 'warning', color: '#f59e0b', title: 'Atención' },
-    danger: { icon: 'error', color: '#ef4444', title: 'Error' },
+    success: { icon: 'success', color: '#087f5b', title: 'Éxito' },
+    info: { icon: 'info', color: '#0759b8', title: 'Información' },
+    warning: { icon: 'warning', color: '#a16207', title: 'Atención' },
+    danger: { icon: 'error', color: '#b42318', title: 'Error' },
 };
 
 function pideAlert(message, type = 'info', title = null) {
@@ -36,7 +37,7 @@ function pideAlert(message, type = 'info', title = null) {
             if (swalTitle) {
                 swalTitle.style.fontSize = '1.35rem';
                 swalTitle.style.fontWeight = '700';
-                swalTitle.style.color = '#1e293b';
+                swalTitle.style.color = '#172033';
             }
             const btn = popup.querySelector('.swal2-confirm');
             if (btn) {

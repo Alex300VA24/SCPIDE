@@ -231,7 +231,7 @@
                 @error('module')<span class="field-error" role="alert">{{ $message }}</span>@enderror
                 <div class="action-buttons">
                     <button type="button" wire:click="closeDeleteModal" data-ui-close="closeDeleteModal" class="btn btn-secondary">Cancelar</button>
-                    <button type="button" wire:click="delete" class="btn btn-primary" style="background:linear-gradient(135deg,#ef4444,#dc2626);">Eliminar</button>
+                    <button type="button" wire:click="delete" class="btn btn-primary danger-button">Eliminar</button>
                 </div>
             </section>
         </div>

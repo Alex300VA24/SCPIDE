@@ -11,11 +11,11 @@
             window.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'question',
-                    iconColor: '#3b82f6',
+                    iconColor: '#0759b8',
                     title: 'Página no encontrada',
-                    html: '<p style="color:#64748b;font-size:.95rem;line-height:1.6;">La página que buscas no existe o fue movida.</p>',
+                    html: '<p style="color:#526079;font-size:.95rem;line-height:1.6;">La página que buscas no existe o fue movida.</p>',
                     confirmButtonText: 'Ir al inicio',
-                    confirmButtonColor: '#3b82f6',
+                    confirmButtonColor: '#0759b8',
                     background: '#ffffff',
                     backdrop: 'rgba(15, 23, 42, .55)',
                     allowOutsideClick: false,

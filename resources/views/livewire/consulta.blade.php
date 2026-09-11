@@ -120,7 +120,7 @@
 
             @if($page['source'] === 'RENIEC')
                 <div class="consulta-result-actions">
-                    <form method="POST" action="{{ route('consulta.dni.pdf') }}">
+                    <form method="POST" action="{{ route('consulta.pdf') }}">
                         @csrf
                         <input type="hidden" name="token" value="{{ $pdfToken ?? '' }}">
                         <button type="submit" class="consulta-button consulta-button-pdf" @disabled(!($searched && $real && ($pdfToken ?? '')))><x-icon name="pdf" /> Exportar PDF</button>

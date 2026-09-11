@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Http\Requests\ActualizarPasswordRequest;
-use App\Services\ChangeUserPasswordService;
+use App\UseCases\Password\ChangeUserPassword;
 use Livewire\Component;
 
 final class ActualizarPassword extends Component
@@ -20,9 +20,11 @@ final class ActualizarPassword extends Component
         $this->resetValidation();
     }
 
-    public function update(ChangeUserPasswordService $service)
+    public function update(ChangeUserPassword $changeUserPassword)
     {
         $usuario = auth()->user();
+
+        $this->authorize('updatePassword', $usuario);
 
         $this->validate(
             ActualizarPasswordRequest::buildRules(),
@@ -30,10 +32,7 @@ final class ActualizarPassword extends Component
             ActualizarPasswordRequest::validationAttributes(),
         );
 
-        $currentPassword = $this->currentPassword;
-        $newPassword = $this->password;
-
-        $service->change($usuario, $currentPassword, $newPassword);
+        $changeUserPassword->handle($usuario, $this->currentPassword, $this->password);
 
         $this->clearForm();
 

@@ -1,4 +1,14 @@
 <div class="inicio-container">
+    <header class="inicio-heading">
+        <span class="inicio-heading-mark" aria-hidden="true"><x-icon name="grid" /></span>
+        <div class="inicio-heading-copy">
+            <span class="inicio-eyebrow">Directorio institucional</span>
+            <h2>Consultas interoperables</h2>
+            <p>Selecciona una fuente de información para iniciar una consulta segura con las entidades conectadas al sistema PIDE.</p>
+        </div>
+        <span class="badge badge-info inicio-access-note"><x-icon name="shield" /> Acceso autorizado</span>
+    </header>
+
     <section class="services-grid" aria-label="Consultas disponibles">
         @foreach ([
             ['key'=>'dni','name'=>'RENIEC','tag'=>'Registro Nacional','description'=>'Registro Nacional de Identificación y Estado Civil','class'=>'reniec','accent'=>'#7c3aed','logo'=>'reniec-logo-sin-fondo.png','badge'=>'shield','features'=>['Consulta por DNI','Datos personales','Estado del documento','Foto y firma digital']],

@@ -11,11 +11,11 @@
             window.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'error',
-                    iconColor: '#ef4444',
+                    iconColor: '#b42318',
                     title: 'Error del servidor',
-                    html: '<p style="color:#64748b;font-size:.95rem;line-height:1.6;">Ocurrió un error inesperado. Intenta nuevamente en unos momentos.</p>',
+                    html: '<p style="color:#526079;font-size:.95rem;line-height:1.6;">Ocurrió un error inesperado. Intenta nuevamente en unos momentos.</p>',
                     confirmButtonText: 'Ir al inicio',
-                    confirmButtonColor: '#ef4444',
+                    confirmButtonColor: '#b42318',
                     background: '#ffffff',
                     backdrop: 'rgba(15, 23, 42, .55)',
                     allowOutsideClick: false,

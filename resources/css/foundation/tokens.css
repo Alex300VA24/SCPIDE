@@ -1,0 +1,36 @@
+@layer base {
+    :root {
+        --font-system: 'Source Sans 3', system-ui, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-heading: 'Lexend', 'Source Sans 3', system-ui, ui-sans-serif, sans-serif;
+
+        --nav: #123b72;
+        --nav-deep: #08284d;
+        --primary: #0759b8;
+        --primary-hover: #064a99;
+        --focus: #f0a202;
+        --ink: #172033;
+        --muted: #526079;
+        --soft: #eef3f8;
+        --canvas: #f3f6fa;
+        --surface: #ffffff;
+        --line: #cbd5e1;
+        --line-strong: #94a3b8;
+        --success: #087f5b;
+        --danger: #b42318;
+        --warning: #a16207;
+
+        --radius-sm: 7px;
+        --radius-md: 10px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-pill: 999px;
+
+        --shadow-xs: 0 1px 2px rgba(8, 40, 77, .06);
+        --shadow-sm: 0 6px 18px rgba(8, 40, 77, .08);
+        --shadow-md: 0 14px 34px rgba(8, 40, 77, .12);
+
+        --ui-fast: 160ms;
+        --ui-base: 220ms;
+        --ui-ease: cubic-bezier(.16, 1, .3, 1);
+    }
+}

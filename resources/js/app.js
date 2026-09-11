@@ -9,5 +9,6 @@ import '@fontsource/lexend/latin-800.css';
 
 import './bootstrap';
 import './legacy-ui';
+import './dashboard-ui';
 import './alerts';
 import './error-handling';

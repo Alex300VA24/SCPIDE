@@ -249,7 +249,7 @@
                         @endif
                     @endforeach
                 </div>
-                <form method="POST" action="{{ route('consulta.partida.pdf') }}">
+                <form method="POST" action="{{ route('consulta.pdf') }}">
                     @csrf
                     <input type="hidden" name="token" value="{{ $pdfToken }}">
                     <button type="submit" class="sunarp-pdf-button" @disabled(!$pdfToken)>

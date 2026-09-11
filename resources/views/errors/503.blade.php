@@ -11,11 +11,11 @@
             window.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'info',
-                    iconColor: '#3b82f6',
+                    iconColor: '#0759b8',
                     title: 'Servicio no disponible',
-                    html: '<p style="color:#64748b;font-size:.95rem;line-height:1.6;">El sistema está en mantenimiento. Vuelve a intentarlo en unos minutos.</p>',
+                    html: '<p style="color:#526079;font-size:.95rem;line-height:1.6;">El sistema está en mantenimiento. Vuelve a intentarlo en unos minutos.</p>',
                     confirmButtonText: 'Reintentar',
-                    confirmButtonColor: '#3b82f6',
+                    confirmButtonColor: '#0759b8',
                     background: '#ffffff',
                     backdrop: 'rgba(15, 23, 42, .55)',
                     allowOutsideClick: false,

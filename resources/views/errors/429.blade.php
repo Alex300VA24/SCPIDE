@@ -11,11 +11,11 @@
             window.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'warning',
-                    iconColor: '#f59e0b',
+                    iconColor: '#a16207',
                     title: 'Demasiadas solicitudes',
-                    html: '<p style="color:#64748b;font-size:.95rem;line-height:1.6;">Hiciste demasiados intentos en poco tiempo. Espera un momento y vuelve a intentarlo.</p>',
+                    html: '<p style="color:#526079;font-size:.95rem;line-height:1.6;">Hiciste demasiados intentos en poco tiempo. Espera un momento y vuelve a intentarlo.</p>',
                     confirmButtonText: 'Reintentar',
-                    confirmButtonColor: '#f59e0b',
+                    confirmButtonColor: '#a16207',
                     background: '#ffffff',
                     backdrop: 'rgba(15, 23, 42, .55)',
                     allowOutsideClick: false,

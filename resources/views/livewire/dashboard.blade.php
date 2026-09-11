@@ -1,40 +1,6 @@
 <div
     class="dashboard-container"
-    x-data="{
-        navigationOpen: $wire.entangle('navigationOpen').live,
-        logoutOpen: false,
-        logoutSubmitting: false,
-        loadingSectionTitle: @js($this->sectionTitle()),
-        sidebarCollapsed: (window.innerWidth > 900 && localStorage.getItem('sidebar_collapsed') === 'true'),
-        toggleCollapse() {
-            this.sidebarCollapsed = !this.sidebarCollapsed;
-            localStorage.setItem('sidebar_collapsed', this.sidebarCollapsed);
-        },
-        openLogout() {
-            if (this.logoutSubmitting) {
-                return;
-            }
-
-            this.logoutOpen = true;
-        },
-        closeLogout() {
-            this.logoutOpen = false;
-            this.logoutSubmitting = false;
-        },
-        submitLogout() {
-            if (this.logoutSubmitting) {
-                return;
-            }
-
-            this.logoutSubmitting = true;
-            this.$nextTick(() => {
-                const form = this.$root.querySelector('[data-logout-form]');
-                if (form) {
-                    form.submit();
-                }
-            });
-        },
-    }"
+    x-data="dashboardUi($wire, @js($this->sectionTitle()))"
     x-init="$watch('navigationOpen', value => document.body.classList.toggle('overflow-y-hidden', value))"
     @click.capture="const target = $event.target.closest('[data-navigation-title]'); if (target && $root.contains(target)) loadingSectionTitle = target.dataset.navigationTitle"
     @close-dashboard-navigation.window="navigationOpen = false"
@@ -123,7 +89,7 @@
         </div>
     </aside>
 
-    <button type="button" class="sidebar-toggle-btn" x-show="!navigationOpen" @click="toggleCollapse()" :style="{ left: (sidebarCollapsed ? 62 : 258) + 'px' }" aria-label="Contraer/Expandir menú">
+    <button type="button" class="sidebar-toggle-btn" x-show="!navigationOpen" @click="toggleCollapse()" :style="{ left: (sidebarCollapsed ? 62 : 226) + 'px' }" aria-label="Contraer/Expandir menú">
         <span :class="{ 'is-collapsed': sidebarCollapsed }" class="toggle-icon"><x-icon name="collapse" /></span>
     </button>
 
@@ -136,14 +102,10 @@
                 <div>
                     <span class="dashboard-header-eyebrow">Municipalidad Distrital de La Esperanza</span>
                     <h1>Sistema de Consultas PIDE</h1>
-                    <p>Servicios de interoperabilidad para una atención pública ágil y segura</p>
+                    <p>Consultas interinstitucionales PIDE para una atención pública ágil y segura</p>
                 </div>
             </div>
             <div class="dashboard-header-meta">
-                <!-- <span class="dashboard-pide-mark">
-                    <img src="{{ asset('assets/images/logo-pide-2-sin-fondo.png') }}" alt="Plataforma de Interoperabilidad del Estado">
-                    <span>Conectado con el Estado Peruano</span>
-                </span> -->
                 <span class="header-date"><x-icon name="calendar" />{{ now()->format('d/m/Y H:i') }}</span>
             </div>
         </header>
@@ -196,7 +158,7 @@
     </main>
 
     <div data-ui-modal class="modal-overlay pide-credential-overlay" x-cloak x-show="logoutOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" role="presentation" @click.self="closeLogout()">
-        <section class="modal-content pide-credential-modal pide-logout-modal" role="dialog" aria-modal="true" aria-labelledby="logout-title" aria-describedby="logout-description" x-show="logoutOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-4 scale-95">
+        <section x-ref="logoutDialog" class="modal-content pide-credential-modal pide-logout-modal" role="dialog" aria-modal="true" aria-labelledby="logout-title" aria-describedby="logout-description" x-show="logoutOpen" @keydown.tab="trapLogoutFocus($event)" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-4 scale-95">
             <header class="pide-credential-header pide-logout-header">
                 <div class="pide-credential-heading">
                     <span class="pide-credential-icon pide-logout-icon"><x-icon name="logout" /></span>
@@ -214,7 +176,7 @@
                 <p class="pide-fallback-copy">Se cerrará tu sesión y volverás a la pantalla de acceso. Deberás iniciar sesión nuevamente para continuar.</p>
 
                 <div class="pide-credential-actions">
-                    <button type="button" class="pide-modal-button pide-modal-secondary" @click="closeLogout()">Cancelar</button>
+                    <button x-ref="logoutCancel" type="button" class="pide-modal-button pide-modal-secondary" @click="closeLogout()">Cancelar</button>
                     <form method="POST" action="{{ route('logout') }}" data-logout-form @submit.prevent="submitLogout()">
                         @csrf
                         <button type="submit" class="pide-modal-button pide-logout-confirm" :disabled="logoutSubmitting">
@@ -227,4 +189,6 @@
         </section>
     </div>
 
+    <livewire:pide-password-modal wire:key="pide-password-modal" />
+    <livewire:pide-credential-modal wire:key="pide-credential-modal" />
 </div>

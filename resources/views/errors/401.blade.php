@@ -11,11 +11,11 @@
             window.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'warning',
-                    iconColor: '#f59e0b',
+                    iconColor: '#a16207',
                     title: 'No autenticado',
-                    html: '<p style="color:#64748b;font-size:.95rem;line-height:1.6;">Debes iniciar sesión para acceder a esta página.</p>',
+                    html: '<p style="color:#526079;font-size:.95rem;line-height:1.6;">Debes iniciar sesión para acceder a esta página.</p>',
                     confirmButtonText: 'Ir al login',
-                    confirmButtonColor: '#f59e0b',
+                    confirmButtonColor: '#a16207',
                     background: '#ffffff',
                     backdrop: 'rgba(15, 23, 42, .55)',
                     allowOutsideClick: false,

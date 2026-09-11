@@ -1,0 +1,38 @@
+@layer base {
+    *, *::before, *::after { box-sizing: border-box; }
+    [x-cloak] { display: none !important; }
+
+    html {
+        color-scheme: light;
+        font-family: var(--font-system);
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-width: 320px;
+        margin: 0;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: inherit;
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: #dbeafe; color: var(--nav-deep); }
+
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+    button, input, select, textarea, optgroup { font-family: inherit; }
+    button, input, select, textarea, a { outline: none; }
+    button:disabled, input:disabled, select:disabled, textarea:disabled { cursor: not-allowed; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}

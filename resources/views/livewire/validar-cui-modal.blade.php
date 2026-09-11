@@ -1,6 +1,6 @@
 <div
     id="modalValidarCUI"
-    class="modalCUI modal fade"
+    class="modalCUI"
     style="{{ $showModal ? '' : 'display: none !important;' }}"
     tabindex="-1"
     role="dialog"
@@ -41,12 +41,12 @@
     @keydown.escape.window="closeOptimistically()"
     @keydown.tab.prevent="if (open) moveFocus($event.shiftKey)"
 >
-    <div class="modal-dialog modal-dialog-centered cui-modal-dialog" role="document" @click.self="closeOptimistically()">
-        <div class="modal-content cui-modal-content">
-            <div class="modal-header cui-modal-header">
+    <div class="cui-modal-dialog" role="document" @click.self="closeOptimistically()">
+        <div class="cui-modal-content">
+            <div class="cui-modal-header">
                 <div class="cui-modal-title-row">
                     <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                    <h2 class="modal-title" id="cui-modal-title">Autenticación de Doble Factor — CUI</h2>
+                    <h2 class="cui-modal-title" id="cui-modal-title">Autenticación de Doble Factor — CUI</h2>
                 </div>
             </div>
 
